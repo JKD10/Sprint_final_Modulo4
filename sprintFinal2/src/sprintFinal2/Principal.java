@@ -101,7 +101,7 @@ public class Principal {
     	    System.out.print("Ingrese el nombre del cliente: ");
     	    nombre = scanner.nextLine();
     	    if (nombre.isEmpty()) {
-    	        System.out.println("El nombre no puede estar vacío.");
+    	        System.out.println("El nombre no puede estar vacio.");
     	    }
     	  }
     	String apellido = "";
@@ -204,7 +204,7 @@ public class Principal {
     	    System.out.print("Ingrese el nombre del profesional: ");
     	    nombre = scanner.nextLine();
     	    if (nombre.isEmpty()) {
-    	        System.out.println("El nombre no puede estar vacío.");
+    	        System.out.println("El nombre no puede estar vacio.");
     	    }
     	  }
     	LocalDate fechaNacimiento = null;
@@ -221,7 +221,7 @@ public class Principal {
     	    System.out.print("Ingrese el correo electrónico del profesional: ");
     	    correo = scanner.nextLine();
     	    if (correo.isEmpty()) {
-    	        System.out.println("El correo electrónico no puede estar vacío.");
+    	        System.out.println("El correo electrónico no puede estar vacio.");
     	    }
     	}
     	String titulo = "";
@@ -229,7 +229,7 @@ public class Principal {
     	    System.out.print("Ingrese el título del profesional: ");
     	    titulo = scanner.nextLine();
     	    if (titulo.isEmpty()) {
-    	        System.out.println("El título no puede estar vacío.");
+    	        System.out.println("El título no puede estar vacio.");
     	    }
     	}
     	String especialidad = "";
@@ -237,7 +237,7 @@ public class Principal {
     	    System.out.print("Ingrese la especialidad del profesional: ");
     	    especialidad = scanner.nextLine();
     	    if (especialidad.isEmpty()) {
-    	        System.out.println("La especialidad no puede estar vacía.");
+    	        System.out.println("La especialidad no puede estar vacia.");
     	    }
     	}
     	LocalDate fechaIngreso = null;
@@ -281,7 +281,7 @@ public class Principal {
     	    System.out.print("Ingrese el nombre del administrativo: ");
     	    nombre = scanner.nextLine();
     	    if (nombre.isEmpty()) {
-    	        System.out.println("El nombre no puede estar vacío.");
+    	        System.out.println("El nombre no puede estar vacio.");
     	    }
     	  }
         String correo = "";
@@ -289,7 +289,7 @@ public class Principal {
             System.out.print("Ingrese el correo electrónico del administrativo: ");
             correo = scanner.nextLine();
             if (correo.isEmpty()) {
-                System.out.println("El correo electrónico no puede estar vacío.");
+                System.out.println("El correo electrónico no puede estar vacio.");
             }
         }
         LocalDate fechaNacimiento = null;
@@ -306,7 +306,7 @@ public class Principal {
             System.out.print("Ingrese el área del administrativo: ");
             area = scanner.nextLine();
             if (area.isEmpty()) {
-                System.out.println("El área no puede estar vacía.");
+                System.out.println("El área no puede estar vacia.");
             }
         }
         String experienciaPrevia = "";
@@ -314,7 +314,7 @@ public class Principal {
             System.out.print("Ingrese la experiencia previa del administrativo: ");
             experienciaPrevia = scanner.nextLine();
             if (experienciaPrevia.isEmpty()) {
-                System.out.println("La experiencia previa no puede estar vacía.");
+                System.out.println("La experiencia previa no puede estar vacia.");
             }
         }
         Administrativo administrativo = new Administrativo();
@@ -362,7 +362,7 @@ public class Principal {
     	}*/
     	
     	while (true) {
-			System.out.println("ingrese dia de la sema de la capacitacion debe de ser entre lunes a domingo:");
+			System.out.println("ingrese dia de la semana de la capacitacion debe de ser entre lunes a domingo:");
 			dia= scanner.nextLine();
 			if(!dia.isEmpty() && Verificar.verificarDia(dia)) {
 				
@@ -419,7 +419,7 @@ public class Principal {
         
         int duracion = 0;
         while (duracion <= 0) {
-            System.out.print("Ingrese la duración de la capacitación (en horas): ");
+            System.out.print("Ingrese la duración de la capacitacion (en horas): ");
             duracion = scanner.nextInt();
             scanner.nextLine();
             if (duracion <= 0) {
@@ -451,10 +451,10 @@ public class Principal {
 		            if (cantidadAsistentes <= 10000 && Verificar.verificarNumeros(cantidadAsistentes)) {
 		                break;
 		            } else {
-		                System.out.println("\n\t--Ingrese una cantidad válida menor a 1000.");
+		                System.out.println("\n\t--Ingrese una cantidad valida menor a 1000.");
 		            }
 		        } catch (NumberFormatException e) {
-		            System.out.println("\n\t-- Debe ingresar un número válido.");
+		            System.out.println("\n\t-- Debe ingresar un numero valido.");
 		        }
 		    }
 		}
@@ -499,7 +499,7 @@ public class Principal {
 	    }
     			
 		
-		System.out.print("Ingrese el rut del usuario que desee eleminar, sin punto ni guion: ");
+		System.out.print("Ingrese el rut del usuario que desee eliminar, sin punto ni guion: ");
 		run = Integer.parseInt(scanner.nextLine());
 		if(run<99999999 && Verificar.verificarRut(run)) {
 			contenedor.eliminarUsuario(run);	 	               

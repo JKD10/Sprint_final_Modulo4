@@ -42,7 +42,7 @@ public class Capacitacion {
         if (dia.equalsIgnoreCase("lunes") || dia.equalsIgnoreCase("martes") || dia.equalsIgnoreCase("miercoles") || dia.equalsIgnoreCase("jueves") || dia.equalsIgnoreCase("viernes") || dia.equalsIgnoreCase("sábado") || dia.equalsIgnoreCase("domingo")) {
             this.dia = dia;
         } else {
-            System.out.println("El día debe ser un valor permitido entre \"lunes\" y \"domingo\" (en ese formato).");
+            System.out.println("El dia debe ser un valor permitido entre \"lunes\" y \"domingo\" (en ese formato).");
         }
     }
 
