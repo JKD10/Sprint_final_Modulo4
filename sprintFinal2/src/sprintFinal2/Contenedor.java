@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 
 
+
 /**
  * Clase que representa un contenedor para almacenar asesorías y capacitaciones.
  */
@@ -42,19 +43,18 @@ public class Contenedor {
 
        
         
-    public void eliminarUsuario(int run) {   	
+    public void eliminarUsuario(int rut) {   	
         Iterator<Asesoria> iterator = asesorias.iterator();
         while (iterator.hasNext()) {
             Asesoria asesoria = iterator.next();
-            if (asesoria instanceof Usuario && ((Usuario) asesoria).getRun() == run) {
+            if (asesoria instanceof Usuario && ((Usuario) asesoria).getRun() == rut) {
                 iterator.remove();
-                System.out.println("Usuario con rut " + run + " eliminado correctamente.");
+                System.out.println("Usuario con rut " + rut + " eliminado correctamente.");
                 return; // Salir del método después de eliminar el usuario
             }
         }
-        System.out.println("No se encontró ningún usuario con el rut " + run + ".");
+        System.out.println("No se encontró ningún usuario con el rut " + rut + ".");
     }
-    
 
 
     public List<Usuario> listarUsuarios() {

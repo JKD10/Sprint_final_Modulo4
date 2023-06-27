@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 public class Verificar {
 	
-	public static boolean verificarRut(int run ) {
+	public static boolean verificarRut(int rut ) {
 
 
-		String rutString = String.valueOf(run); // Convertir el rut a una cadena
+		String rutString = String.valueOf(rut); // Convertir el rut a una cadena
 		String regex = "^[0-9]{1,8}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(rutString);

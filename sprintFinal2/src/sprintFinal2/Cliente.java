@@ -132,7 +132,7 @@ public class Cliente extends Usuario implements Asesoria {
     }
 
     public String toString() {
-        return super.toString() + ", Apellidos: " + apellido + ", Telefono: " + telefono + ", AFP: " + afp + ", Sistema de salud: " + sistemaSalud + ", Direccion: " + direccion + ", Comuna: " + comuna + ", Edad: " + edad;
+        return super.toString() + " , Apellidos: " + apellido + " , Telefono: " + telefono + " , AFP: " + afp + " , Sistema de salud: " + sistemaSalud + " , Direccion: " + direccion + " , Comuna: " + comuna + " , Edad: " + edad;
     }
     
     public String obtenerSistemaSalud() {
@@ -151,7 +151,7 @@ public class Cliente extends Usuario implements Asesoria {
 
     public void analizarUsuario() {
         super.analizarUsuario();
-        System.out.println("Direccion: " + direccion + ", Comuna: " + comuna);
+        System.out.println("Direccion: " + direccion + " , Comuna: " + comuna);
     }
     
     private List<Capacitacion> capacitaciones;

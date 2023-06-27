@@ -37,7 +37,7 @@ public class Profesional extends Usuario {
     }
 
     public String toString() {
-        return super.toString() + ", Titulo: " + titulo + ", Fecha de ingreso: " + fechaIngreso.toString();
+        return super.toString() + " , Titulo: " + titulo + " , Fecha de ingreso: " + fechaIngreso.toString();
     }
     
     public void analizarUsuario() {

@@ -68,7 +68,7 @@ public abstract class Usuario implements Asesoria {
         if (fechaNacimiento != null) {
             fechaNacimientoStr = fechaNacimiento.format(formatter);
         }
-        return "Nombre: " + nombre + ", Fecha de nacimiento: " + fechaNacimiento + "Run=" + run + "]";
+        return "Nombre: " + nombre + " , Fecha de nacimiento: " + fechaNacimiento + " Run= " + run + "]";
     }
 
     
