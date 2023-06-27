@@ -16,7 +16,7 @@ public class Verificar {
 		return matcher.matches();
 	}
 	
-public static boolean verificarDia(String dia) {
+	public static boolean verificarDia(String dia) {
 		
 		String regex = "^(lunes|martes|miércoles|jueves|viernes|sábado|domingo)$";
         Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);

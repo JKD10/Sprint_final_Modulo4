@@ -1,8 +1,8 @@
 package sprintFinal2;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Clase que representa un Cliente, que es un tipo de Usuario y puede brindar Asesoría.
@@ -86,13 +86,14 @@ public class Cliente extends Usuario implements Asesoria {
         return sistemaSalud;
     }
 
-    public void setSistemaSalud(int sistemaSalud) {
-        if (sistemaSalud == 1 || sistemaSalud == 2) {
-            this.sistemaSalud = sistemaSalud;
+    public void setSistemaSalud(int nombreSistemaSalud) {
+        if (nombreSistemaSalud == 1 || nombreSistemaSalud == 2) {
+            this.sistemaSalud = nombreSistemaSalud;
         } else {
             System.out.println("El sistema de salud debe ser 1 (Fonasa) o 2 (Isapre).");
         }
-    }
+    }    
+   
 
     public String getDireccion() {
         return direccion;

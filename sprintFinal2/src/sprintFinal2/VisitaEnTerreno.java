@@ -1,13 +1,14 @@
 package sprintFinal2;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.ArrayList;
 
 public class VisitaEnTerreno {
     private int identificador;
     private String rutCliente;
-    private Date dia;
+    private LocalDate dia;
     private String hora;
     private String lugar;
     private String comentarios;
@@ -15,7 +16,7 @@ public class VisitaEnTerreno {
 
     public VisitaEnTerreno() {}
 
-    public VisitaEnTerreno(int identificador, String rutCliente, Date dia, String hora, String lugar, String comentarios) {
+    public VisitaEnTerreno(int identificador, String rutCliente, LocalDate dia, String hora, String lugar, String comentarios) {
         this.identificador = identificador;
         this.rutCliente = rutCliente;
         this.dia = dia;
@@ -41,11 +42,11 @@ public class VisitaEnTerreno {
         this.rutCliente = rutCliente;
     }
 
-    public Date getDia() {
+    public LocalDate getDia() {
         return dia;
     }
 
-    public void setDia(Date dia) {
+    public void setDia(LocalDate dia) {
         this.dia = dia;
     }
 

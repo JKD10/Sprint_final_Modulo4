@@ -1,6 +1,7 @@
 package sprintFinal2;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -98,7 +99,7 @@ public class Principal {
 
     	String nombre = "";
     	while (nombre.isEmpty()) {
-    	    System.out.print("Ingrese el nombre del cliente: ");
+    	    System.out.print("Ingrese los 2 nombres del cliente: ");
     	    nombre = scanner.nextLine();
     	    if (nombre.isEmpty()) {
     	        System.out.println("El nombre no puede estar vacio.");
@@ -106,7 +107,7 @@ public class Principal {
     	  }
     	String apellido = "";
     	while (apellido.isEmpty()) {
-    	    System.out.print("Ingrese el apellido del cliente: ");
+    	    System.out.print("Ingrese los 2 apellidos del cliente: ");
     	    apellido = scanner.nextLine();
     	    if (apellido.isEmpty()) {
     	        System.out.println("El apellido no puede estar vacio.");
@@ -146,6 +147,8 @@ public class Principal {
                 System.out.println("Opcion invalida, ingrese 1 o 2");
             }
         }
+        
+    	
         System.out.print("Ingrese la direccion del cliente: ");
         String direccion = scanner.nextLine();
         while (direccion.isEmpty()) {
@@ -179,6 +182,221 @@ public class Principal {
         cliente.setDireccion(direccion);
         cliente.setComuna(comuna);
         cliente.setEdad(edad);
+        
+        
+     // Solicitar información de la visita en terreno
+       /* System.out.println("Ingrese numero identificador de la visita en terreno:");
+        int identificadorVisita = scanner.nextInt();
+        LocalDate dia = null;
+        while (dia == null) {
+        	try {
+            System.out.print("Ingrese la fecha de la visita en terreno en (formato yyyy-MM-dd) ");            
+                dia = LocalDate.parse(scanner.nextLine());
+                if (dia.isAfter(LocalDate.now())) {
+                    System.out.println("La fecha de la visita en terreno no puede ser posterior a la fecha actual.");
+                    dia = null;
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("La fecha de la visita en terreno debe estar en (formato yyyy-MM-dd)");
+            }
+        }
+        
+        scanner.nextLine(); // Limpiar el búfer de entrada
+        String hora = "";
+        while (hora.isEmpty()) {
+            System.out.print("Ingrese la hora de la visita en terreno: ");
+            hora = scanner.nextLine();
+            if (hora.isEmpty()) {
+                System.out.println("La hora no puede estar vacía.");
+            }
+        }
+        String lugar = "";
+        while (lugar.isEmpty()) {
+            System.out.print("Ingrese el lugar de la visita en terreno: ");
+            lugar = scanner.nextLine();
+            if (lugar.isEmpty()) {
+                System.out.println("El lugar no puede estar vacío.");
+            }
+        }
+        String comentariosVisita = "";
+        while (comentariosVisita.isEmpty()) {
+            System.out.print("Ingrese los comentarios de la visita en terreno: ");
+            comentariosVisita = scanner.nextLine();
+            if (comentariosVisita.isEmpty()) {
+                System.out.println("Los comentarios no pueden estar vacíos.");
+            }
+        }
+
+        // Crear instancia de VisitaEnTerreno y agregarla al cliente
+        VisitaEnTerreno visitaEnTerreno = new VisitaEnTerreno();
+        visitaEnTerreno.setIdentificador(identificadorVisita);
+        visitaEnTerreno.setDia(dia);
+        visitaEnTerreno.setHora(hora);
+        visitaEnTerreno.setLugar(lugar);
+        visitaEnTerreno.setComentarios(comentariosVisita);
+        cliente.agregarVisita(visitaEnTerreno);
+
+        // Solicitar información de la revisión
+        System.out.println("Ingrese información de la revisión:");
+        int identificadorRevision = scanner.nextInt();
+        scanner.nextLine(); // Limpiar el búfer de entrada
+        String nombreRevision = "";
+        while (nombreRevision.isEmpty()) {
+            System.out.print("Ingrese el nombre de la revisión: ");
+            nombreRevision = scanner.nextLine();
+            if (nombreRevision.isEmpty()) {
+                System.out.println("El nombre no puede estar vacío.");
+            }
+        }
+        String detalleRevision = "";
+        while (detalleRevision.isEmpty()) {
+            System.out.print("Ingrese el detalle de la revisión: ");
+            detalleRevision = scanner.nextLine();
+            if (detalleRevision.isEmpty()) {
+                System.out.println("El detalle no puede estar vacío.");
+            }
+        }
+        int estadoRevision = 0;
+        while (estadoRevision <= 0 || estadoRevision > 3) {
+            System.out.print("Ingrese el estado de la revisión (1 para pendiente, 2 para en proceso, 3 para completada): ");
+            estadoRevision = scanner.nextInt();
+            if (estadoRevision <= 0 || estadoRevision > 3) {
+                System.out.println("El estado debe ser 1, 2 o 3.");
+            }
+        }
+
+        // Crear instancia de Revision y agregarla a la visita en terreno
+        Revision revision = new Revision();
+        revision.setIdentificador(identificadorRevision);
+        revision.setIdentificadorVisita(identificadorVisita);
+        revision.setNombre(nombreRevision);
+        revision.setDetalle(detalleRevision);
+        revision.setEstado(estadoRevision);
+        visitaEnTerreno.agregarRevision(revision);
+
+     // Agregar visita en terreno al cliente y almacenar cliente en contenedor
+        cliente.agregarVisita(visitaEnTerreno);
+        
+     // Preguntar si desea agregar más visitas en terreno y revisiones
+        boolean agregarMasVisitas = false;
+        boolean agregarMasRevisiones = false;
+        while (true) {
+            System.out.print("¿Desea agregar más visitas en terreno a este cliente? (s/n): ");
+            String respuesta = scanner.nextLine();
+            if (respuesta.equalsIgnoreCase("s")) {
+                agregarMasVisitas = true;
+                break;
+            } else if (respuesta.equalsIgnoreCase("n")) {
+                break;
+            } else {
+                System.out.println("Por favor, ingrese 's' para si o 'n' para no.");
+            }
+        }
+        if (agregarMasVisitas) {
+            while (true) {
+                System.out.println("Ingrese información de la nueva visita en terreno:");
+                identificadorVisita = scanner.nextInt();
+                LocalDate dia2 = null;
+                while (dia2 == null) {
+                	try {
+                    System.out.print("Ingrese la fecha de la visita en terreno en (formato yyyy-MM-dd): ");                    
+                        dia2 = LocalDate.parse(scanner.nextLine());
+                        if (dia2.isAfter(LocalDate.now())) {
+                            System.out.println("La fecha de la visita en terreno no puede ser posterior a la fecha actual.");
+                            dia2 = null;
+                        }
+                    } catch (DateTimeParseException e) {
+                        System.out.println("La fecha de la visita en terreno debe estar en formato yyyy-MM-dd.");
+                    }
+                }
+                
+                hora = "";
+                while (hora.isEmpty()) {
+                    System.out.print("Ingrese la hora de la visita en terreno: ");
+                    hora = scanner.nextLine();
+                    if (hora.isEmpty()) {
+                        System.out.println("La hora no puede estar vacía.");
+                    }
+                }
+                lugar = "";
+                while (lugar.isEmpty()) {
+                    System.out.print("Ingrese el lugar de la visita en terreno: ");
+                    lugar = scanner.nextLine();
+                    if (lugar.isEmpty()) {
+                        System.out.println("El lugar no puede estar vacío.");
+                    }
+                }
+                comentariosVisita = "";
+                while (comentariosVisita.isEmpty()) {
+                    System.out.print("Ingrese comentarios sobre la visita en terreno: ");
+                    comentariosVisita = scanner.nextLine();
+                    if (comentariosVisita.isEmpty()) {
+                        System.out.println("Los comentarios no pueden estar vacíos.");
+                    }
+                }
+                visitaEnTerreno = new VisitaEnTerreno();
+                visitaEnTerreno.setIdentificador(identificadorVisita);
+                visitaEnTerreno.setDia(dia2);
+                visitaEnTerreno.setHora(hora);
+                visitaEnTerreno.setLugar(lugar);
+                visitaEnTerreno.setComentarios(comentariosVisita);
+                cliente.agregarVisita(visitaEnTerreno);
+
+                // Agregar revisión a la nueva visita
+                System.out.println("Ingrese información de la revisión:");
+                int identificadorRevision2 = scanner.nextInt();
+                scanner.nextLine(); // Limpiar el búfer de entrada
+                String nombreRevision2 = "";
+                while (nombreRevision.isEmpty()) {
+                    System.out.print("Ingrese el nombre de la revisión: ");
+                    nombreRevision = scanner.nextLine();
+                    if (nombreRevision.isEmpty()) {
+                        System.out.println("El nombre no puede estar vacío.");
+                    }
+                }
+                String detalleRevision2 = "";
+                while (detalleRevision.isEmpty()) {
+                    System.out.print("Ingrese el detalle de la revisión: ");
+                    detalleRevision = scanner.nextLine();
+                    if (detalleRevision.isEmpty()) {
+                        System.out.println("El detalle no puede estar vacío.");
+                    }
+                }
+                int estadoRevision2 = 0;
+                while (estadoRevision <= 0 || estadoRevision > 3) {
+                    System.out.print("Ingrese el estado de la revisión (1 para pendiente, 2 para en proceso, 3 para completada): ");
+                    estadoRevision = scanner.nextInt();
+                    if (estadoRevision <= 0 || estadoRevision > 3) {
+                        System.out.println("El estado debe ser 1, 2 o 3.");
+                    }
+                }
+                revision = new Revision();
+                revision.setIdentificador(identificadorRevision2);
+                revision.setIdentificadorVisita(identificadorVisita);
+                revision.setNombre(nombreRevision2);
+                revision.setDetalle(detalleRevision2);
+                revision.setEstado(estadoRevision2);
+                visitaEnTerreno.agregarRevision(revision);
+
+                // Preguntar si desea agregar más revisiones a la nueva visita
+                agregarMasRevisiones = false;
+                while (true) {
+                    System.out.print("¿Desea agregar más revisiones a esta visita? (s/n): ");
+                    String respuesta = scanner.nextLine();
+                    if (respuesta.equalsIgnoreCase("s")) {
+                        agregarMasRevisiones = true;
+                        break;
+                    } else if (respuesta.equalsIgnoreCase("n")) {
+                        break;
+                    } else {
+                        System.out.println("Por favor, ingrese 's' para sí o 'n' para no.");
+                    }
+                }
+                if (!agregarMasRevisiones) {
+                    break;
+                }
+            }
+        }   */
 
         contenedor.almacenarCliente(cliente);
         
@@ -351,15 +569,7 @@ public class Principal {
     	    }
     	}
     	String dia = "";
-    	/*Pattern pattern = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
-    	while (dia.isEmpty()) {
-    	    System.out.print("Ingrese el día de la capacitación (formato yyyy-MM-dd): ");
-    	    dia = scanner.nextLine();
-    	    if (!pattern.matcher(dia).matches()) {
-    	        System.out.println("El formato de la fecha es incorrecto. Ingrese la fecha en formato yyyy-MM-dd.");
-    	        dia = "";
-    	    }
-    	}*/
+    	
     	
     	while (true) {
 			System.out.println("ingrese dia de la semana de la capacitacion debe de ser entre lunes a domingo:");
@@ -375,18 +585,7 @@ public class Principal {
 		}
         String hora = "";
         
-        /*Pattern pattern1 = Pattern.compile("^([01][0-9]|2[0-3]):[0-5][0-9]$");
-        Matcher matcher = null;
-        while (hora.isEmpty() || !matcher.matches()) {
-            System.out.print("Ingrese la hora de la capacitacion (formato HH:mm): ");
-            hora = scanner.nextLine();
-            matcher = pattern1.matcher(hora);
-            if (hora.isEmpty()) {
-                System.out.println("La hora no puede estar vacía.");
-            } else if (!matcher.matches()) {
-                System.out.println("Formato de hora incorrecto. Ingrese la hora en formato HH:mm.");
-            }
-        }*/
+        
         
         while (true ) {
 			System.out.println("Ingrese la hora de la capacitacion, debe de estar en formato HH:MM :");
@@ -399,14 +598,7 @@ public class Principal {
 		}
         
         String lugar = "";
-       /* while (lugar.isEmpty()) {
-            System.out.print("Ingrese el lugar de la capacitación: ");
-            lugar = scanner.nextLine();
-            if (lugar.isEmpty()) {
-                System.out.println("El lugar no puede estar vacío.");
-            }
-        }*/
-        
+       
         while(true) {
 			System.out.println("Ingrese el lugar de la capacitacion, debe de ser entre 10 y 50 caracteres: ");
 			lugar = scanner.nextLine();
@@ -429,14 +621,7 @@ public class Principal {
         
         int cantidadAsistentes = 0;
         
-        /*while (cantidadAsistentes <= 0) {
-            System.out.print("Ingrese la cantidad de asistentes: ");
-            cantidadAsistentes = scanner.nextInt();
-            scanner.nextLine();
-            if (cantidadAsistentes <= 0) {
-                System.out.println("La cantidad de asistentes debe ser mayor que cero.");
-            }
-        }*/
+        
         
         while (true) {    
 		    System.out.print("Ingrese la cantidad de asistentes: ");
@@ -474,30 +659,14 @@ public class Principal {
     }
    
 
-    /*private static void eliminarUsuario(Contenedor contenedor, Scanner scanner) {
-    	String run;
-    	if(contenedor.asesorias.isEmpty() ) {
-    		System.out.println("\n\t-- No existen usuarios registrados. ");
-    		return;
-    	}
-    	System.out.println();
-        System.out.print("Ingrese el RUT del usuario a eliminar, sin puntos ni guion : ");
-        System.out.println();
-        run = scanner.nextLine();
-        if(Integer.parseInt(run)<99999999 && Verificar.verificarRut(Integer.parseInt(run))) {
-        	contenedor.eliminarUsuario(run);
-        }
-        System.out.println("Usuario eliminado exitosamente");
-    }*/
+    
     
     public static void eliminarUsuario(Contenedor contenedor, Scanner scanner) {
-		int run;			
-		
+		int run;
 		if (contenedor.asesorias.isEmpty() ) {
 	        System.out.println("\n\t-- No existen usuarios registrados. ");
 	        return;
-	    }
-    			
+	    }    			
 		
 		System.out.print("Ingrese el rut del usuario que desee eliminar, sin punto ni guion: ");
 		run = Integer.parseInt(scanner.nextLine());
@@ -505,7 +674,6 @@ public class Principal {
 			contenedor.eliminarUsuario(run);	 	               
 		}         				
 	}
-
 
     private static void listarUsuarios(Contenedor contenedor) {
     	if (contenedor.asesorias.isEmpty() ) {

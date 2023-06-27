@@ -40,29 +40,20 @@ public class Contenedor {
         capacitaciones.add(capacitacion);
     }
 
-    /*public static void eliminarUsuario(List<Usuario> usuarios, int rut) {
-        if (usuarios == null) {
-        	usuarios = new ArrayList<>();
-        }
-    	usuarios.removeIf(usuario -> usuario.getRun() == rut);
-    }*/
-    
+       
         
- public void eliminarUsuario(int run) {   	
-    	
-    	
+    public void eliminarUsuario(int run) {   	
         Iterator<Asesoria> iterator = asesorias.iterator();
         while (iterator.hasNext()) {
-            Asesoria usuario = iterator.next();
-            if (((Usuario) usuario).getRun() ==(run)) {
+            Asesoria asesoria = iterator.next();
+            if (asesoria instanceof Usuario && ((Usuario) asesoria).getRun() == run) {
                 iterator.remove();
                 System.out.println("Usuario con rut " + run + " eliminado correctamente.");
                 return; // Salir del método después de eliminar el usuario
             }
         }
-        System.out.println("\n\t-- No se encontró un usuario con el rut " + run + ".");
-       
-    }	
+        System.out.println("No se encontró ningún usuario con el rut " + run + ".");
+    }
     
 
 
@@ -86,18 +77,7 @@ public class Contenedor {
         }
     }
     
- // Lista las capacitaciones
-    /*public void listarCapacitaciones() {
-        for (Capacitacion capacitacion : capacitaciones) {
-            System.out.println(capacitacion.toString());
-            for (Asesoria asesoria : asesorias) {
-                if (asesoria instanceof Cliente && ((Cliente) asesoria).getCapacitaciones().contains(capacitacion)) {
-                    System.out.println("Cliente: " + asesoria.getNombreCompleto());
-                }
-            }
-            System.out.println();
-        }
-    }*/
+ 
     
     public void listarCapacitaciones() {
         for (Capacitacion capacitacion : capacitaciones) {
